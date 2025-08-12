@@ -46,8 +46,11 @@ with gr.Blocks(title=APP_TITLE, css="footer {visibility: hidden}") as demo:
     with gr.Row():
         llm_out = gr.Markdown(label="LLM 설명 리포트")
 
-    btn.click(fn=infer, inputs=[img_in], outputs=[img_out, pred_text, llm_out])
+    btn.click(fn=infer,
+          inputs=[img_in],
+          outputs=[img_out, pred_text, llm_out],
+          concurrency_limit=2)
     img_in.change(fn=lambda x: (None, "", ""), inputs=img_in, outputs=[img_out, pred_text, llm_out])
 
 if __name__ == "__main__":
-    demo.queue(concurrency_count=2).launch()
+    demo.launch(max_threads=2, show_api=False)

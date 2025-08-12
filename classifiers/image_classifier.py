@@ -1,7 +1,8 @@
 from typing import Tuple
 import torch
 import torch.nn as nn
-from torchvision import models, transforms
+from torchvision import transforms
+from torchvision.models import resnet34
 from PIL import Image
 from dataclasses import dataclass
 from pathlib import Path
@@ -15,7 +16,7 @@ class Prediction:
 class ImageClassifier:
     def __init__(self, weights_path: Path, device: str = "cpu"):
         self.device = torch.device(device)
-        self.model = models.resnet34(pretrained=False)
+        self.model = resnet34(weights=None)
         self.model.fc = nn.Linear(self.model.fc.in_features, 2)
         state = torch.load(weights_path, map_location=self.device)
         self.model.load_state_dict(state)
