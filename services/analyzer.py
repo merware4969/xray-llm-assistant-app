@@ -42,6 +42,11 @@ class Analyzer:
                 prompt, system="당신은 의료영상 보조설명가입니다. 안전하고 책임있는 안내를 제공합니다."
             ).text
         except Exception as e:
-            report = f"[LLM 오류: {type(e).__name__}]"
+            # 콘솔에도 남겨서 서버 로그로 확인 가능
+            import traceback
+            print("[LLM ERROR]", repr(e))
+            traceback.print_exc()
+            # UI에는 메시지까지 보여준다
+            report = f"[LLM 오류] {e}"
 
         return AnalysisResult(prediction=pred, overlay_image=overlay, llm_report=report)

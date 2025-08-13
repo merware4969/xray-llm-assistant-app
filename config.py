@@ -27,6 +27,10 @@ AZURE_OPENAI_ENDPOINT = os.environ.get("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_KEY = os.environ.get("AZURE_OPENAI_API_KEY")
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 
+# ★ Gemini
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+GEMINI_API_BASE = os.environ.get("GEMINI_API_BASE", "https://generativelanguage.googleapis.com")
+
 # 선택적 튜닝 파라미터
 LLM_TEMPERATURE = float(os.environ.get("LLM_TEMPERATURE", 0.2))
 REQUEST_TIMEOUT = int(os.environ.get("REQUEST_TIMEOUT", 60))  # seconds

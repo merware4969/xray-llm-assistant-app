@@ -1,3 +1,12 @@
+# app.py 맨 위
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv(usecwd=True), override=True)
+
+import os
+print("[ENV] PROVIDER=", os.environ.get("LLM_PROVIDER"))
+print("[ENV] MODEL   =", os.environ.get("LLM_MODEL"))
+print("[ENV] KEY_SET =", bool(os.environ.get("OPENAI_API_KEY")))
+
 import gradio as gr
 from PIL import Image
 import torch, random, numpy as np
@@ -46,11 +55,18 @@ with gr.Blocks(title=APP_TITLE, css="footer {visibility: hidden}") as demo:
     with gr.Row():
         llm_out = gr.Markdown(label="LLM 설명 리포트")
 
-    btn.click(fn=infer,
-          inputs=[img_in],
-          outputs=[img_out, pred_text, llm_out],
-          concurrency_limit=2)
-    img_in.change(fn=lambda x: (None, "", ""), inputs=img_in, outputs=[img_out, pred_text, llm_out])
+    btn.click(
+        fn=infer,
+        inputs=img_in,
+        outputs=[img_out, pred_text, llm_out],
+        concurrency_limit=2,
+    )
+    
+    img_in.change(
+        fn=lambda x: (None, "", ""),
+        inputs=img_in,
+        outputs=[img_out, pred_text, llm_out],
+    )
 
 if __name__ == "__main__":
-    demo.launch(max_threads=2, show_api=False)
+    demo.launch(server_name="127.0.0.1", server_port=7861, max_threads=2)
