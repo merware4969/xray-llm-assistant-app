@@ -69,4 +69,7 @@ with gr.Blocks(title=APP_TITLE, css="footer {visibility: hidden}") as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(server_name="127.0.0.1", server_port=7861, max_threads=2)
+    demo.launch(server_name="0.0.0.0",
+                server_port=7861,
+                share=True,
+                max_threads=2)
