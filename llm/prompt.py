@@ -16,7 +16,7 @@ class PromptBuilder:
         other = x.class_names[1 - x.pred_idx]
         other_conf = x.probs[1 - x.pred_idx] * 100
 
-        return f"""당신은 영상의학과 임상보조 설명가입니다. 아래 모델 결과를 토대로 '교육용' 안내문을 작성하세요.
+        return f"""당신은 영상의학과 임상보조 설명가입니다. 아래 모델 결과를 토대로 '참고용' 안내문을 작성하세요.
 - 의료진의 진단을 대체하지 않음을 명확히 고지
 - 모델의 한계와 Grad-CAM 해석 주의사항 포함
 - 용어는 쉬운 설명 먼저, 괄호로 전문어 병기
