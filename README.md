@@ -194,20 +194,11 @@ pydantic-core<2.26
 
 ---
 
-## 개발 팁
+## 추가 제안 사항
 
 - 응답 길이 제어: 프롬프트에 “6~8문장, 간결하게”와 같은 길이 힌트를 포함.
 - 비용 제어: `LLM_MAX_TOKENS`/프롬프트 길이 최적화.
 - 로깅: LLM 예외 메시지는 UI와 콘솔 모두에 표기하여 진단 시간 단축.
-
----
-
-## 현재 환경을 requirements.txt로 저장하기
-
-가상환경이 활성화된 상태에서 실행:
-```bash
-python -m pip freeze > requirements.txt
-```
 
 ---
 
