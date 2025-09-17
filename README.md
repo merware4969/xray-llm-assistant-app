@@ -17,7 +17,7 @@
 ---
 
 ## 📸 시연 화면
-
+![Image](https://github.com/user-attachments/assets/d21d506c-810d-4be7-be63-568f7eeb5c26)
 
 ---
 
